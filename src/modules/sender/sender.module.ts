@@ -1,9 +1,10 @@
 import { ModuleMetadata } from '@nestjs/common';
 
 import { ModuleBuilder } from '../core/decorators';
+import { Configure } from '../core/configure';
 
 import { SmsService, SmtpService, AliyunEmailService } from './services';
-import { SmsConfig, SmtpConfig, AliyunEmailConfig } from './types';
+import { SmsConfig, SmtpConfig } from './types';
 
 @ModuleBuilder(async (configure) => {
     /**
@@ -37,8 +38,8 @@ import { SmsConfig, SmtpConfig, AliyunEmailConfig } from './types';
     if (configure.has('aliyunEmail')) {
         providers.push({
             provide: AliyunEmailService,
-            useFactory: async (configure) => new AliyunEmailService(configure),
-            inject: ['Configure'],
+            useFactory: async (configure: Configure) => new AliyunEmailService(configure),
+            inject: [Configure],
         });
         exps.push(AliyunEmailService);
     }

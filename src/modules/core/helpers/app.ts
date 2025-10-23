@@ -56,7 +56,7 @@ export async function createBootModule(
     const importModules = [...modules, CoreModule];
     if (configure.has('database')) importModules.push(DatabaseModule);
     if (configure.has('api')) importModules.push(RestfulModule);
-    if (configure.has('sms') || configure.has('smtp')) importModules.push(SenderModule);
+    if (configure.has('sms') || configure.has('smtp') || configure.has('aliyunEmail')) importModules.push(SenderModule);
     if (configure.has('redis')) {
         importModules.push(RedisModule);
         if (configure.has('queue')) importModules.push(QueueModule);

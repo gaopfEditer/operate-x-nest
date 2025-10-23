@@ -1,18 +1,22 @@
 module.exports = {
-    apps: [{
-      name: 'gitee-nestjs-2022',
-      script: 'dist/main.js',
-      instances: 'max', // 使用所有CPU核心
-      exec_mode: 'cluster',
-      env: {
-        NODE_ENV: 'production',
-        PORT: 3101
-      },
-      error_file: './logs/err.log',
-      out_file: './logs/out.log',
-      log_file: './logs/combined.log',
-      time: true,
-      max_memory_restart: '1G',
-      node_args: '--max-old-space-size=1024'
-    }]
-  }
+    apps: [
+        {
+            name: 'nest-app',
+            script: 'dist/main.js',
+            instances: 1, // 先用单实例测试
+            exec_mode: 'fork', // 先用fork模式测试
+            env: {
+                NODE_ENV: 'production',
+                PORT: 3101,
+                REDIS_HOST: '1.94.137.69',
+                REDIS_PORT: '6379',
+                REDIS_PASSWORD: 'foobared',
+                DB_HOST: '1.94.137.69',
+                DB_PORT: '3306',
+                DB_USER: 'root',
+                DB_PASSWORD: '123456',
+                DB_NAME: '3r',
+            },
+        },
+    ],
+};

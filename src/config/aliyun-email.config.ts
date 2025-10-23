@@ -1,5 +1,3 @@
-import { resolve } from 'path';
-import { toBoolean } from '@/modules/core/helpers';
 import { createAliyunEmailConfig } from '@/modules/sender/helpers';
 
 export const aliyunEmail = createAliyunEmailConfig((configure) => ({
